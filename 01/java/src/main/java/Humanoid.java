@@ -1,33 +1,37 @@
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Humanoid {
-    private String humanoidType;
+	private final String humanoidType;
+	private static final Map<String, String> SOUNDS_BY_TYPE;
+	private SoundChannel channel;
 
-    public void walk() {
-        if (humanoidType.equals("Lady with high heels")) {
-            System.out.println("TOC! TOC! TOC!");
-        } else {
-            if (humanoidType.equals("Ninja")) {
-                System.out.println("...");
-            } else {
-                if (humanoidType.equals("Pirate")) {
-                    System.out.println("Tap, toc, tap, toc.");
-                } else {
-                    if(humanoidType.equals("Robot")) {
-                        System.out.println("Bzz, bang, bzzz, bang");
-                    } else {
-                        if(humanoidType.equals("Regular human")) {
-                            System.out.println("Tap, tap, tap, tap");
-                        }
-                    }
-                }
-            }
-        }
-    }
+	static {
+		HashMap<String, String> soundsByType = new HashMap<>();
+		
+		soundsByType.put("Regular human", "Tap, tap, tap, tap");
+		soundsByType.put("Robot", "Bzz, bang, bzzz, bang");
+		soundsByType.put("Pirate", "Tap, toc, tap, toc.");
+		soundsByType.put("Ninja", "...");
+		soundsByType.put("Lady with high heels", "TOC! TOC! TOC!");
+		
+		SOUNDS_BY_TYPE = Collections.unmodifiableMap(soundsByType);
+	}
+	
 
-    public String getHumanoidType() {
-        return humanoidType;
-    }
+	public Humanoid(String humanoidType, SoundChannel channel) {
+		this.humanoidType = humanoidType;
+		this.channel = channel;
+	}
 
-    public void setHumanoidType(String humanoidType) {
-        this.humanoidType = humanoidType;
-    }
+	public void walk() {
+		String sound = SOUNDS_BY_TYPE.get(this.humanoidType);
+		channel.printSound(sound);
+	}
+
+	public String getHumanoidType() {
+		return humanoidType;
+	}
+
 }
