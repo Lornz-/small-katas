@@ -5,22 +5,21 @@ import java.util.Map;
 public class Humanoid {
 	private final String humanoidType;
 	private static final Map<String, String> SOUNDS_BY_TYPE;
-	private SoundChannel channel;
+	private ISoundChannel channel;
 
 	static {
 		HashMap<String, String> soundsByType = new HashMap<>();
-		
+
 		soundsByType.put("Regular human", "Tap, tap, tap, tap");
 		soundsByType.put("Robot", "Bzz, bang, bzzz, bang");
 		soundsByType.put("Pirate", "Tap, toc, tap, toc.");
 		soundsByType.put("Ninja", "...");
 		soundsByType.put("Lady with high heels", "TOC! TOC! TOC!");
-		
+
 		SOUNDS_BY_TYPE = Collections.unmodifiableMap(soundsByType);
 	}
-	
 
-	public Humanoid(String humanoidType, SoundChannel channel) {
+	public Humanoid(String humanoidType, ISoundChannel channel) {
 		this.humanoidType = humanoidType;
 		this.channel = channel;
 	}

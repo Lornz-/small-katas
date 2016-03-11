@@ -1,6 +1,7 @@
 public class Main {
 
     public static void main(String[] args) {
+
     	ConsoleSoundChannel channel = new ConsoleSoundChannel();
     	
         Humanoid humanoid1 = new Humanoid("Lady with high heels", channel);

@@ -5,15 +5,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StatsCalculator {
-    static List<String> getTeamsUnderAgeAverage() {
-        String csvFile = System.getProperty("user.dir") + "/src/main/resources/input.csv";
-        String line;
-        Double somme = 0.0;
-        int counter = 0;
-        List<String> teams = new ArrayList<>();
+	
+	 private String pathFile;
+     private String line;
+     private Double somme = 0.0;
+     private int counter = 0;
+     private List<String> teams;
+	
+	public StatsCalculator(String pathFile) {
+		this.pathFile = pathFile;
+		this.teams = new ArrayList<>();
+		
+	}
+
+	
+    public List<String> getTeamsUnderAgeAverage() {
+    	
+       
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader(csvFile));
+            BufferedReader br = new BufferedReader(new FileReader(pathFile));
 
             br.readLine();
 
@@ -27,10 +38,10 @@ public class StatsCalculator {
 
             }
 
-            // Lire l'autre fichier
+           
             double moyenne = somme / counter;
 
-            BufferedReader br2 = new BufferedReader(new FileReader(csvFile));
+            BufferedReader br2 = new BufferedReader(new FileReader(pathFile));
 
             br2.readLine();
 
@@ -53,15 +64,10 @@ public class StatsCalculator {
         return teams;
     }
 
-    static List<String> getTeamsOverPointsAverage() {
-        String csvFile = System.getProperty("user.dir") + "/src/main/resources/input.csv";
-        String line;
-        Double somme = 0.0;
-        int counter = 0;
-        List<String> teams = new ArrayList<>();
+    public List<String> getTeamsOverPointsAverage() {
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader(csvFile));
+            BufferedReader br = new BufferedReader(new FileReader(pathFile));
 
             br.readLine();
 
@@ -78,7 +84,7 @@ public class StatsCalculator {
             // Lire l'autre fichier
             double moyenne = somme / counter;
 
-            BufferedReader br2 = new BufferedReader(new FileReader(csvFile));
+            BufferedReader br2 = new BufferedReader(new FileReader(pathFile));
 
             br2.readLine();
 
