@@ -1,3 +1,6 @@
+import humanoid.Humanoid;
+import soundChannel.ConsoleSoundChannel;
+
 public class Main {
 
     public static void main(String[] args) {
