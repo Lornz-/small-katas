@@ -11,9 +11,7 @@ public class HumanoidTest {
 	private static final String LADY_WITH_HIGH_HEELS = "Lady with high heels";
 
 	TestableSoundChannel testChannel = new TestableSoundChannel();
-	Humanoid humanoid;
-
-	AbstractHumanoid aHumanoid;
+	Humanoid aHumanoid;
 
 	@Test
 	public void should_return_tap_tap_sound_when_regular_human_walk() {
